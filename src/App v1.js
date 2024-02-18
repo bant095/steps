@@ -10,9 +10,7 @@ export default function App() {
   return (
     <div>
       <Steps />
-      <StepMessage step={1}>
-        <p>Pass in content</p>
-      </StepMessage>
+      <Steps />
     </div>
   );
 }
@@ -51,50 +49,27 @@ function Steps() {
             <div className={step >= 3 ? 'active' : ''}>3</div>
           </div>
 
-          {/* message  */}
-          <StepMessage step={step}>
-            {messages[step - 1]}
-            <div className='buttons'>
-              <Button
-                bgColor='#e7e7e7'
-                textColor='#333'
-                onClick={() => alert(`Learn how to ${messages[step - 1]}`)}
-              >
-                Learn how
-              </Button>
-            </div>
-          </StepMessage>
+          <p className='message'>
+            Step {step}: {messages[step - 1]}
+            {/* {test.name} */}
+          </p>
 
-          {/* button */}
           <div className='buttons'>
-            <Button bgColor='#7950f2' textColor='#fff' onClick={handlePrevious}>
+            <button
+              style={{ background: '#7950f2', color: '#fff' }}
+              onClick={handlePrevious}
+            >
               Previous
-            </Button>
-            <Button bgColor='#7950f2' textColor='#fff' onClick={handleNext}>
+            </button>
+            <button
+              style={{ background: '#7950f2', color: '#fff' }}
+              onClick={handleNext}
+            >
               Next
-            </Button>
+            </button>
           </div>
         </div>
       )}
     </div>
-  );
-}
-
-///Message
-function StepMessage({ step, children }) {
-  return (
-    <div className='message'>
-      <h3>Step {step}: </h3>
-      {children}
-    </div>
-  );
-}
-
-// PROP BTN
-function Button({ textColor, bgColor, onClick, children }) {
-  return (
-    <button style={{ background: bgColor, color: textColor }} onClick={onClick}>
-      {children}
-    </button>
   );
 }
